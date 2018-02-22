@@ -14,7 +14,7 @@ REM in the PROPERTY relation.
 
 CREATE TABLE PROPERTY_TYPE
 (
-	Type		VARCHAR(12)		PRIMARY KEY,
+	Type				VARCHAR(12)		PRIMARY KEY,
 	Description	VARCHAR(250)
 );
 
@@ -25,7 +25,7 @@ REM in the INVOICE relation.
 
 CREATE TABLE INVOICE_TYPE
 (
-	Type		VARCHAR(12)		PRIMARY KEY,
+	Type				VARCHAR(12)		PRIMARY KEY,
 	Description VARCHAR(250)
 );
 
@@ -36,13 +36,13 @@ REM for each landlord.
 
 CREATE TABLE LANDLORD
 (
-	Id			INT				PRIMARY KEY, 
-    Name		VARCHAR(50)		NOT NULL, 
-	Street		VARCHAR(50)		NOT NULL,
-    City		VARCHAR(50)		NOT NULL, 
-    State		VARCHAR(50)		NOT NULL, 
-    Zip			INT				NOT NULL, 
-    Phone		CHAR(10)		NOT NULL, 
+		Id			INT						PRIMARY KEY,
+    Name		VARCHAR(50)		NOT NULL,
+		Street	VARCHAR(50)		NOT NULL,
+    City		VARCHAR(50)		NOT NULL,
+    State		VARCHAR(50)		NOT NULL,
+    Zip			INT						NOT NULL,
+    Phone		CHAR(10)			NOT NULL,
     Email		VARCHAR(50)		NOT NULL,
     CONSTRAINT EMAILSTRINGLORD CHECK(Email LIKE '%@%')
 );
@@ -56,12 +56,12 @@ REM property type references the PROPERTY_TYPE relation.
 
 CREATE TABLE PROPERTY
 (
-	Id			INT				PRIMARY KEY,
-	Lord_ID		INT		DEFAULT 1234,
-	Street		VARCHAR(50) 	NOT NULL,
-	City		VARCHAR(50) 	NOT NULL,
-	State		VARCHAR(50) 	NOT NULL,
-	Zip 		INT 			NOT NULL,
+	Id				INT					PRIMARY KEY,
+	Lord_ID		INT					DEFAULT 1234,
+	Street		VARCHAR(50) NOT NULL,
+	City			VARCHAR(50) NOT NULL,
+	State			VARCHAR(50) NOT NULL,
+	Zip 			INT 				NOT NULL,
 	Value 		INT,
 	Description VARCHAR(255),
 	Type 		VARCHAR(12),
@@ -79,12 +79,12 @@ REM PROPERTY relation.
 
 CREATE TABLE TENANT
 (
-    ID 			INT 			PRIMARY KEY,
+  ID 				INT 					PRIMARY KEY,
 	Prop_ID 	INT,
-	Name 		VARCHAR(30) 	NOT NULL,
+	Name 			VARCHAR(30) 	NOT NULL,
 	Phone 		CHAR(10),
 	Email 		VARCHAR(30),
-	Registration_date DATE		NOT NULL,
+	Registration_date DATE	NOT NULL,
 	CONSTRAINT TENANT_PROPERTY_FK
 	FOREIGN KEY(Prop_ID) REFERENCES PROPERTY(Id) ON DELETE SET NULL,
 	CONSTRAINT EMAILSTRINGTEN CHECK(Email LIKE '%@%')
@@ -98,12 +98,12 @@ REM relation.  The tenant ID references the TENANT relation.
 
 CREATE TABLE LEASE
 (
-	Id			INT 			PRIMARY KEY,
-	Prop_ID 	INT 			NOT NULL,
-	Start_date 	DATE,
-	Duration_months INT		DEFAULT 12,
-	Monthly_rent FLOAT,
-	Tenant_ID   INT             NOT NULL,
+	ID							INT 			PRIMARY KEY,
+	Prop_ID 				INT 			NOT NULL,
+	Start_date 			DATE,
+	Duration_months INT				DEFAULT 12,
+	Monthly_rent 		FLOAT,
+	Tenant_ID   		INT       NOT NULL,
 	CONSTRAINT DURMIN CHECK (Duration_months >= 6),
 	CONSTRAINT DURMAX CHECK (Duration_months <= 24),
 	CONSTRAINT LEASE_PROPERTY_FK
@@ -117,18 +117,18 @@ REM INVOICE:
 REM This table contains a unique ID, property ID, issuing
 REM date, payment date, description, cost and invoice
 REM type.  The property ID references a property in the
-REM PROPERTY relation.  The type references the 
+REM PROPERTY relation.  The type references the
 REM INVOICE_TYPE relation.
 
 CREATE TABLE INVOICE
 (
-	Id 			INT 			PRIMARY KEY,
-	Prop_ID 	INT	DEFAULT NULL,
+	ID 					INT 				PRIMARY KEY,
+	Prop_ID 		INT	DEFAULT NULL,
 	Date_issued DATE,
 	Date_paid 	DATE,
 	Description VARCHAR(255)		DEFAULT 'RENT',
-	Cost 		FLOAT,
-	Type 		VARCHAR(12),
+	Cost 				FLOAT,
+	Type 				VARCHAR(12),
 	CONSTRAINT INVOICE_PROPERTY_FK
 	FOREIGN KEY(Prop_ID) REFERENCES PROPERTY(Id),
 	CONSTRAINT INVOICE_INVTYPE_FK
@@ -146,14 +146,30 @@ REM Sample data for PROPERTY_TYPE
 REM Summary: store some enums
 
 INSERT INTO PROPERTY_TYPE VALUES ('STUDIO', 'An apartment containing one room.');
-INSERT INTO PROPERTY_TYPE VALUES ('APARTMENT', 'A suite of rooms forming one residence, typically in a building containing a number of these.');
-INSERT INTO PROPERTY_TYPE VALUES ('HOME RENTAL', 'This is a home rental description.');
+INSERT INTO PROPERTY_TYPE VALUES ('APT 1BD/1BA', 'A 1 bed and 1 bath apartment');
+INSERT INTO PROPERTY_TYPE VALUES ('APT 2BD/1BA', 'A 1 bed and 1 bath apartment');
+INSERT INTO PROPERTY_TYPE VALUES ('APT 2BD/2BA', 'A 2 bed and 2 bath apartment');
+INSERT INTO PROPERTY_TYPE VALUES ('APT 3BD/1BA', 'A 3 bed and 1 bath apartment');
+INSERT INTO PROPERTY_TYPE VALUES ('APT 3BD/2BA', 'A 3 bed and 2 bath apartment');
+INSERT INTO PROPERTY_TYPE VALUES ('SFH 1BD/1BA', 'A 1 bed and 1 bath Single Family Home');
+INSERT INTO PROPERTY_TYPE VALUES ('SFH 2BD/1BA', 'A 2 bed and 1 bath Single Family Home');
+INSERT INTO PROPERTY_TYPE VALUES ('SFH 2BD/2BA', 'A 2 bed and 2 bath Single Family Home');
+INSERT INTO PROPERTY_TYPE VALUES ('SFH 3BD/1BA', 'A 3 bed and 1 bath Single Family Home');
+INSERT INTO PROPERTY_TYPE VALUES ('SFH 3BD/2BA', 'A 3 bed and 2 bath Single Family Home');
+INSERT INTO PROPERTY_TYPE VALUES ('SFH 4BD/2BA', 'A 3 bed and 2 bath Single Family Home');
+INSERT INTO PROPERTY_TYPE VALUES ('SFH 4BD/3BA', 'A 4 bed and 3 bath Single Family Home');
+INSERT INTO PROPERTY_TYPE VALUES ('SFH LARGE', 'A Single Family Home larger than 4BD/3BA');
+INSERT INTO PROPERTY_TYPE VALUES ('IND WRHS', 'Warehouse space');
+INSERT INTO PROPERTY_TYPE VALUES ('IND OFFICE', 'Office space');
 
 REM Sample data for INVOICE_TYPE
 REM Summary: store some enums
 
 INSERT INTO INVOICE_TYPE VALUES ('MAINTENANCE', 'An invoice for maintenance on a specific property.');
-INSERT INTO INVOICE_TYPE VALUES ('LEASE BILL', 'An invoice used for lease payments.');
+INSERT INTO INVOICE_TYPE VALUES ('RENT', 'An invoice used for lease payments.');
+INSERT INTO INVOICE_TYPE VALUES ('DAMAGE', 'An invoice used for lease payments.');
+INSERT INTO INVOICE_TYPE VALUES ('REFUND', 'An invoice used for refunding tenants.');
+INSERT INTO INVOICE_TYPE VALUES ('MISC', 'Miscilaneous invoice.');
 
 REM Sample data for LANDLORD
 REM Summary: store landlords.
@@ -174,22 +190,22 @@ REM Sample data for PROPERTY
 REM Summary: store 4 properties for each type of property
 REM as well as one property with no tenant.
 
-INSERT INTO PROPERTY VALUES (1,1234,'38 Galvin Road', 'Seattle', 'WA', 98181,5000,'Need something here', 'HOME RENTAL');
+INSERT INTO PROPERTY VALUES (1,1234,'38 Galvin Road', 'Seattle', 'WA', 98181,5000,'Need something here', 'SFH 1BD/1BA');
 INSERT INTO PROPERTY VALUES (2,1234,'61 North Mulberry St.', 'Seattle', 'WA',98194,10000,'Need something here', 'STUDIO');
-INSERT INTO PROPERTY VALUES (3,1234,'87 Angel Ave', 'Seattle', 'WA',98109,15000,'Need something here', 'HOME RENTAL');
-INSERT INTO PROPERTY VALUES (4,1234,'50 Old Dr.', 'Seattle', 'WA',98174,20000,'Need something here', 'HOME RENTAL');
+INSERT INTO PROPERTY VALUES (3,1234,'87 Angel Ave', 'Seattle', 'WA',98109,15000,'Need something here', 'SFH 1BD/1BA');
+INSERT INTO PROPERTY VALUES (4,1234,'50 Old Dr.', 'Seattle', 'WA',98174,20000,'Need something here', 'SFH 1BD/1BA');
 
-INSERT INTO PROPERTY VALUES (5,5678,'9860 Cactus Lane Apt A', 'Tacoma', 'WA', 98417,4000,'Need something here', 'APARTMENT');
-INSERT INTO PROPERTY VALUES (6,5678,'9860 Cactus Lane Apt B', 'Tacoma', 'WA', 98417,5000,'Need something here', 'APARTMENT');
-INSERT INTO PROPERTY VALUES (7,5678,'9860 Cactus Lane Apt C', 'Tacoma', 'WA', 98417,6000,'Need something here', 'APARTMENT');
-INSERT INTO PROPERTY VALUES (8,5678,'9860 Cactus Lane Apt D', 'Tacoma', 'WA', 98417,7000,'Need something here', 'APARTMENT');
+INSERT INTO PROPERTY VALUES (5,5678,'9860 Cactus Lane Apt A', 'Tacoma', 'WA', 98417,4000,'Need something here', 'APT 2BD/1BA');
+INSERT INTO PROPERTY VALUES (6,5678,'9860 Cactus Lane Apt B', 'Tacoma', 'WA', 98417,5000,'Need something here', 'APT 2BD/1BA');
+INSERT INTO PROPERTY VALUES (7,5678,'9860 Cactus Lane Apt C', 'Tacoma', 'WA', 98417,6000,'Need something here', 'APT 2BD/1BA');
+INSERT INTO PROPERTY VALUES (8,5678,'9860 Cactus Lane Apt D', 'Tacoma', 'WA', 98417,7000,'Need something here', 'APT 2BD/1BA');
 
 INSERT INTO PROPERTY VALUES (9,1538,'7689 W. College St. Suite 1', 'Kent', 'WA', 98031,2000,'Need something here', 'STUDIO');
 INSERT INTO PROPERTY VALUES (10,1538,'7689 W. College St. Suite 2', 'Kent', 'WA', 98031,3000,'Need something here', 'STUDIO');
 INSERT INTO PROPERTY VALUES (11,1538,'7689 W. College St. Suite 3', 'Kent', 'WA', 98031,4000,'Need something here', 'STUDIO');
 INSERT INTO PROPERTY VALUES (12,1538,'7689 W. College St. Suite 4', 'Kent', 'WA', 98031,5000,'Need something here', 'STUDIO');
 
-INSERT INTO PROPERTY VALUES (13,1946,'1950 Harper St.','Narnia','WA',00000,1000000,'Wardrobe not included.','HOME RENTAL');
+INSERT INTO PROPERTY VALUES (13,1946,'1950 Harper St.','Narnia','WA',00000,1000000,'Wardrobe not included.','SFH 1BD/1BA');
 
 REM Sample data for TENANT
 REM Summary: store data tenants for each property locations
@@ -230,18 +246,18 @@ INSERT INTO LEASE VALUES (12,12,DATE'2017-12-12',6,1300.00,12);
 REM Sample data for INVOICE
 REM Summary: store invoices data for each transaction
 
-INSERT INTO INVOICE VALUES (1,1,DATE'2017-02-02',DATE'2017-02-02','Rent Payment',2000.00,'LEASE BILL');
-INSERT INTO INVOICE VALUES (2,2,DATE'2017-03-03',DATE'2017-03-03','Rent Payment',2100.00,'LEASE BILL');
-INSERT INTO INVOICE VALUES (3,3,DATE'2017-04-04',DATE'2017-04-04','Rent Payment',2200.00,'LEASE BILL');
-INSERT INTO INVOICE VALUES (4,4,DATE'2017-05-05',DATE'2017-05-05','Rent Payment',2300.00,'LEASE BILL');
-INSERT INTO INVOICE VALUES (5,5,DATE'2017-06-06',DATE'2017-06-06','Rent Payment',1500.00,'LEASE BILL');
-INSERT INTO INVOICE VALUES (6,6,DATE'2017-07-07',DATE'2017-07-07','Rent Payment',1600.00,'LEASE BILL');
-INSERT INTO INVOICE VALUES (7,7,DATE'2017-08-08',DATE'2017-08-08','Rent Payment',1700.00,'LEASE BILL');
-INSERT INTO INVOICE VALUES (8,8,DATE'2017-09-09',DATE'2017-09-09','Rent Payment',1800.00,'LEASE BILL');
-INSERT INTO INVOICE VALUES (9,9,DATE'2017-10-10',DATE'2017-06-06','Rent Payment',1000.00,'LEASE BILL');
-INSERT INTO INVOICE VALUES (10,10,DATE'2017-11-11',DATE'2017-07-07','Rent Payment',1100.00,'LEASE BILL');
-INSERT INTO INVOICE VALUES (11,11,DATE'2017-12-12',DATE'2017-08-08','Rent Payment',1200.00,'LEASE BILL');
-INSERT INTO INVOICE VALUES (12,12,DATE'2018-01-01',DATE'2017-09-09','Rent Payment',1300.00,'LEASE BILL');
+INSERT INTO INVOICE VALUES (1,1,DATE'2017-02-02',DATE'2017-02-02','Rent Payment',2000.00,'RENT');
+INSERT INTO INVOICE VALUES (2,2,DATE'2017-03-03',DATE'2017-03-03','Rent Payment',2100.00,'RENT');
+INSERT INTO INVOICE VALUES (3,3,DATE'2017-04-04',DATE'2017-04-04','Rent Payment',2200.00,'RENT');
+INSERT INTO INVOICE VALUES (4,4,DATE'2017-05-05',DATE'2017-05-05','Rent Payment',2300.00,'RENT');
+INSERT INTO INVOICE VALUES (5,5,DATE'2017-06-06',DATE'2017-06-06','Rent Payment',1500.00,'RENT');
+INSERT INTO INVOICE VALUES (6,6,DATE'2017-07-07',DATE'2017-07-07','Rent Payment',1600.00,'RENT');
+INSERT INTO INVOICE VALUES (7,7,DATE'2017-08-08',DATE'2017-08-08','Rent Payment',1700.00,'RENT');
+INSERT INTO INVOICE VALUES (8,8,DATE'2017-09-09',DATE'2017-09-09','Rent Payment',1800.00,'RENT');
+INSERT INTO INVOICE VALUES (9,9,DATE'2017-10-10',DATE'2017-06-06','Rent Payment',1000.00,'RENT');
+INSERT INTO INVOICE VALUES (10,10,DATE'2017-11-11',DATE'2017-07-07','Rent Payment',1100.00,'RENT');
+INSERT INTO INVOICE VALUES (11,11,DATE'2017-12-12',DATE'2017-08-08','Rent Payment',1200.00,'RENT');
+INSERT INTO INVOICE VALUES (12,12,DATE'2018-01-01',DATE'2017-09-09','Rent Payment',1300.00,'RENT');
 INSERT INTO INVOICE VALUES (13,1,DATE'2017-06-08',DATE'2017-06-18','Sink leak',500.00,'MAINTENANCE');
 INSERT INTO INVOICE VALUES (14,6,DATE'2017-05-05',DATE'2017-05-10','Shower head broke',100.00,'MAINTENANCE');
 
@@ -257,11 +273,11 @@ REM Expected: A table with 12 tuples containing a tenant
 REM name, the landlord in charge of the property they are
 REM renting and the type of property.
 
-SELECT T.name AS "Tenant Name", 
-	   L.name AS "Landlord Name", 
-	   P.type AS "Property Type" 
-FROM TENANT T 
-JOIN PROPERTY P ON T.prop_id=P.id 
+SELECT T.name AS "Tenant Name",
+	   L.name AS "Landlord Name",
+	   P.type AS "Property Type"
+FROM TENANT T
+JOIN PROPERTY P ON T.prop_id=P.id
 JOIN LANDLORD L ON P.lord_id=L.id;
 
 REM Query 2
@@ -273,7 +289,7 @@ REM 4 per city (Narnia should not be in the table).
 
 SELECT DISTINCT P.city, COUNT(*)
 FROM TENANT T, PROPERTY P
-WHERE P.ID=T.prop_id 
+WHERE P.ID=T.prop_id
 	AND P.city = ANY (SELECT city
 					  FROM PROPERTY)
 GROUP BY P.city
@@ -287,14 +303,14 @@ REM address, landlord and value of the cheapest property
 REM per city.
 
 SELECT L.name AS Landlord,
-	P.street AS Street, 
-	P.city AS City, 
-	P.state AS State, 
-	P.zip AS Zipcode, 
-	P.value AS Value 
-FROM LANDLORD L, PROPERTY P 
-WHERE L.id = P.lord_id 
-	AND value = (SELECT MIN(value) 
+	P.street AS Street,
+	P.city AS City,
+	P.state AS State,
+	P.zip AS Zipcode,
+	P.value AS Value
+FROM LANDLORD L, PROPERTY P
+WHERE L.id = P.lord_id
+	AND value = (SELECT MIN(value)
 				 FROM PROPERTY P2
 				 WHERE P.city=P2.city);
 
@@ -306,14 +322,14 @@ REM show the address and tenant for each property.
 REM One property should not have a tenant and one
 REM tenant should not have a property rented.
 
-SELECT name AS Tenant, street, city, state, zip 
-FROM TENANT T 
+SELECT name AS Tenant, street, city, state, zip
+FROM TENANT T
 FULL JOIN PROPERTY ON prop_id=PROPERTY.id;
 
 REM Query 5
 REM Purpose: Find all the tenants who has a lease
-REM with a duration of 6 months or less. We used 
-REM 'MINUS' for this query which is equivalent 
+REM with a duration of 6 months or less. We used
+REM 'MINUS' for this query which is equivalent
 REM to 'EXCEPT'.
 REM Expected: A table containing 4 tenant names.
 SELECT T.name
@@ -328,10 +344,10 @@ REM Query 6
 REM Purpose: Find all tenants that are under a
 REM landlord with the name "Joshua".
 REM Expected: A table containing four tenant names.
-SELECT T.Name 
+SELECT T.Name
 FROM LANDLORD L, TENANT T, PROPERTY P
-WHERE L.id=P.lord_id 
-	AND P.id=T.prop_id 
+WHERE L.id=P.lord_id
+	AND P.id=T.prop_id
 	AND L.name LIKE '%Joshua%';
 
 REM Query 7
@@ -374,8 +390,7 @@ REM Expected: A single value table containing the value 6
 
 SELECT COUNT(*)
 
-FROM LANDLORD 
+FROM LANDLORD
 WHERE ID NOT IN (SELECT Lord_ID
 
 			       FROM PROPERTY)
-
