@@ -145,12 +145,13 @@ REM ***************************
 REM Sample data for PROPERTY_TYPE
 REM Summary: store some enums
 
-INSERT INTO PROPERTY_TYPE VALUES ('STUDIO', 'An apartment containing one room.');
+INSERT INTO PROPERTY_TYPE VALUES ('APT STUDIO', 'An apartment containing one room.');
 INSERT INTO PROPERTY_TYPE VALUES ('APT 1BD/1BA', 'A 1 bed and 1 bath apartment');
 INSERT INTO PROPERTY_TYPE VALUES ('APT 2BD/1BA', 'A 1 bed and 1 bath apartment');
 INSERT INTO PROPERTY_TYPE VALUES ('APT 2BD/2BA', 'A 2 bed and 2 bath apartment');
 INSERT INTO PROPERTY_TYPE VALUES ('APT 3BD/1BA', 'A 3 bed and 1 bath apartment');
 INSERT INTO PROPERTY_TYPE VALUES ('APT 3BD/2BA', 'A 3 bed and 2 bath apartment');
+
 INSERT INTO PROPERTY_TYPE VALUES ('SFH 1BD/1BA', 'A 1 bed and 1 bath Single Family Home');
 INSERT INTO PROPERTY_TYPE VALUES ('SFH 2BD/1BA', 'A 2 bed and 1 bath Single Family Home');
 INSERT INTO PROPERTY_TYPE VALUES ('SFH 2BD/2BA', 'A 2 bed and 2 bath Single Family Home');
@@ -159,6 +160,7 @@ INSERT INTO PROPERTY_TYPE VALUES ('SFH 3BD/2BA', 'A 3 bed and 2 bath Single Fami
 INSERT INTO PROPERTY_TYPE VALUES ('SFH 4BD/2BA', 'A 3 bed and 2 bath Single Family Home');
 INSERT INTO PROPERTY_TYPE VALUES ('SFH 4BD/3BA', 'A 4 bed and 3 bath Single Family Home');
 INSERT INTO PROPERTY_TYPE VALUES ('SFH LARGE', 'A Single Family Home larger than 4BD/3BA');
+
 INSERT INTO PROPERTY_TYPE VALUES ('IND WRHS', 'Warehouse space');
 INSERT INTO PROPERTY_TYPE VALUES ('IND OFFICE', 'Office space');
 
@@ -190,42 +192,47 @@ REM Sample data for PROPERTY
 REM Summary: store 4 properties for each type of property
 REM as well as one property with no tenant.
 
-INSERT INTO PROPERTY VALUES (1,1,'38 Galvin Road', 'Seattle', 'WA', 98181,5000,'Need something here', 'SFH 1BD/1BA');
-INSERT INTO PROPERTY VALUES (2,1,'61 North Mulberry St.', 'Seattle', 'WA',98194,10000,'Need something here', 'STUDIO');
-INSERT INTO PROPERTY VALUES (3,1,'87 Angel Ave', 'Seattle', 'WA',98109,15000,'Need something here', 'SFH 1BD/1BA');
-INSERT INTO PROPERTY VALUES (4,1,'50 Old Dr.', 'Seattle', 'WA',98174,20000,'Need something here', 'SFH 1BD/1BA');
+INSERT INTO PROPERTY VALUES (1,1,'38 Galvin Road', 'Seattle', 'WA', 98181,5000,'Property Notes Here', 'SFH 1BD/1BA');
+INSERT INTO PROPERTY VALUES (2,1,'61 North Mulberry St.', 'Seattle', 'WA',98194,10000,'Property Notes Here', 'APT STUDIO');
+INSERT INTO PROPERTY VALUES (3,1,'87 Angel Ave', 'Seattle', 'WA',98109,15000,'Property Notes Here', 'SFH 1BD/1BA');
+INSERT INTO PROPERTY VALUES (4,1,'50 Old Dr.', 'Seattle', 'WA',98174,20000,'Property Notes Here', 'SFH 1BD/1BA');
 
-INSERT INTO PROPERTY VALUES (5,2,'9860 Cactus Lane Apt A', 'Tacoma', 'WA', 98417,4000,'Need something here', 'APT 2BD/1BA');
-INSERT INTO PROPERTY VALUES (6,2,'9860 Cactus Lane Apt B', 'Tacoma', 'WA', 98417,5000,'Need something here', 'APT 2BD/1BA');
-INSERT INTO PROPERTY VALUES (7,2,'9860 Cactus Lane Apt C', 'Tacoma', 'WA', 98417,6000,'Need something here', 'APT 2BD/1BA');
-INSERT INTO PROPERTY VALUES (8,2,'9860 Cactus Lane Apt D', 'Tacoma', 'WA', 98417,7000,'Need something here', 'APT 2BD/1BA');
+INSERT INTO PROPERTY VALUES (5,2,'9860 Cactus Lane Apt A', 'Tacoma', 'WA', 98417,4000,'Property Notes Here', 'APT 2BD/1BA');
+INSERT INTO PROPERTY VALUES (6,2,'9860 Cactus Lane Apt B', 'Tacoma', 'WA', 98417,5000,'Property Notes Here', 'APT 2BD/1BA');
+INSERT INTO PROPERTY VALUES (7,2,'9860 Cactus Lane Apt C', 'Tacoma', 'WA', 98417,6000,'Property Notes Here', 'APT 2BD/1BA');
+INSERT INTO PROPERTY VALUES (8,2,'9860 Cactus Lane Apt D', 'Tacoma', 'WA', 98417,7000,'Property Notes Here', 'APT 2BD/1BA');
 
-INSERT INTO PROPERTY VALUES (9,3,'7689 W. College St. Suite 1', 'Kent', 'WA', 98031,2000,'Need something here', 'STUDIO');
-INSERT INTO PROPERTY VALUES (10,3,'7689 W. College St. Suite 2', 'Kent', 'WA', 98031,3000,'Need something here', 'STUDIO');
-INSERT INTO PROPERTY VALUES (11,3,'7689 W. College St. Suite 3', 'Kent', 'WA', 98031,4000,'Need something here', 'STUDIO');
-INSERT INTO PROPERTY VALUES (12,3,'7689 W. College St. Suite 4', 'Kent', 'WA', 98031,5000,'Need something here', 'STUDIO');
+INSERT INTO PROPERTY VALUES (9,3,'7689 W. College St. Suite 1', 'Kent', 'WA', 98031,2000,'Property Notes Here', 'APT STUDIO');
+INSERT INTO PROPERTY VALUES (10,3,'7689 W. College St. Suite 2', 'Kent', 'WA', 98031,3000,'Property Notes Here', 'APT STUDIO');
+INSERT INTO PROPERTY VALUES (11,3,'7689 W. College St. Suite 3', 'Kent', 'WA', 98031,4000,'Property Notes Here', 'APT STUDIO');
+INSERT INTO PROPERTY VALUES (12,3,'7689 W. College St. Suite 4', 'Kent', 'WA', 98031,5000,'Property Notes Here', 'APT STUDIO');
 
 INSERT INTO PROPERTY VALUES (13,4,'1950 Harper St.','Narnia','WA',00000,1000000,'Wardrobe not included.','SFH 1BD/1BA');
 
 REM Sample data for TENANT
 REM Summary: store data tenants for each property locations
 
-INSERT INTO TENANT VALUES (1,1,'Thomas M Anders',2063651375,'tanders@gmail.com',DATE '2017-01-01');
-INSERT INTO TENANT VALUES (2,2,'Dorothy G Wilkinson',2066482157,'dwilkinson@gmail.com',DATE'2017-02-02');
-INSERT INTO TENANT VALUES (3,3,'George A Whyte',2065501377,'gwhyte@gmail.com',DATE'2017-03-03');
-INSERT INTO TENANT VALUES (4,4,'Kenneth M Cloud',4253247693,'kcloud@gmail.com',DATE'2017-04-04');
+INSERT INTO TENANT VALUES (1,1,'Thomas M Anders',2063651375,'tanders@gmail.com',DATE '2010-01-01');
+INSERT INTO TENANT VALUES (2,1,'Jen D Anders',2063651375,'tanders@gmail.com',DATE '2010-01-01');
+INSERT INTO TENANT VALUES (3,2,'Dorothy G Wilkinson',2066482157,'dwilkinson@gmail.com',DATE'2012-02-02');
+INSERT INTO TENANT VALUES (4,2,'James F Wilkinson',2066482157,'jwilkinson@gmail.com',DATE'2012-02-02');
+INSERT INTO TENANT VALUES (5,3,'George A Whyte',2065501377,'gwhyte@gmail.com',DATE'2012-03-03');
+INSERT INTO TENANT VALUES (6,3,'Franky Fish',2065501377,'ffish@gmail.com',DATE'2012-03-03');
+INSERT INTO TENANT VALUES (7,4,'Kenneth M Cloud',4253247693,'kcloud@gmail.com',DATE'2012-04-04');
 
-INSERT INTO TENANT VALUES (5,5,'Theresa H Corbeil',4254957464,'tcorbeil@gmail.com',DATE'2017-05-05');
-INSERT INTO TENANT VALUES (6,6,'Helene C Diaz',2068719078,'hdiaz@gmail.com',DATE'2017-06-06');
-INSERT INTO TENANT VALUES (7,7,'Lowell C Duque',3609844624,'lduque@gmail.com',DATE'2017-07-07');
-INSERT INTO TENANT VALUES (8,8,'Juan C Burris',2068496274,'jburris@gmail.com',DATE'2017-08-08');
+INSERT INTO TENANT VALUES (8,5,'Theresa H Corbeil',4254957464,'tcorbeil@gmail.com',DATE'2012-05-05');
+INSERT INTO TENANT VALUES (9,6,'Helene C Diaz',2068719078,'hdiaz@gmail.com',DATE'2012-06-06');
+INSERT INTO TENANT VALUES (10,7,'Lowell C Duque',3609844624,'lduque@gmail.com',DATE'2012-07-07');
+INSERT INTO TENANT VALUES (11,8,'Juan C Burris',2068496274,'jburris@gmail.com',DATE'2012-08-08');
 
-INSERT INTO TENANT VALUES (9,9,'Janine W Taylor',2069533210,'jtaylor@gmail.com',DATE'2017-09-09');
-INSERT INTO TENANT VALUES (10,10,'Anna W Beebe',3606611025,'abeebe@gmail.com',DATE'2017-10-10');
-INSERT INTO TENANT VALUES (11,11,'Ray J Crutchfield',5093104460,'rcrutchfield@gmail.com',DATE'2017-11-11');
-INSERT INTO TENANT VALUES (12,12,'Julia A Mahoney',3604414963,'jmahoney@gmail.com',DATE'2017-12-12');
+INSERT INTO TENANT VALUES (12,9,'Janine W Taylor',2069533210,'jtaylor@gmail.com',DATE'2017-09-09');
+INSERT INTO TENANT VALUES (13,10,'Anna W Beebe',3606611025,'abeebe@gmail.com',DATE'2017-10-10');
+INSERT INTO TENANT VALUES (14,11,'Ray J Crutchfield',5093104460,'rcrutchfield@gmail.com',DATE'2017-11-11');
+INSERT INTO TENANT VALUES (15,12,'Julia A Mahoney',3604414963,'jmahoney@gmail.com',DATE'2017-12-12');
 
-INSERT INTO TENANT VALUES (13,NULL,'Frank Morris',NULL,NULL,DATE'1969-01-01');
+INSERT INTO TENANT VALUES (16,NULL,'Not A Tenant',3601234567,'nt@gmail.com',DATE'2012-07-07');
+
+
 
 REM Sample data for LEASE
 REM Summary: store lease data for each property that is occupied
@@ -241,7 +248,12 @@ INSERT INTO LEASE VALUES (8,8,DATE'2017-08-08',8,1800.00,8);
 INSERT INTO LEASE VALUES (9,9,DATE'2017-09-09',6,1000.00,9);
 INSERT INTO LEASE VALUES (10,10,DATE'2017-10-10',6,1100.00,10);
 INSERT INTO LEASE VALUES (11,11,DATE'2017-11-11',6,1200.00,11);
-INSERT INTO LEASE VALUES (12,12,DATE'2017-12-12',6,1300.00,12);
+INSERT INTO LEASE VALUES (12,12,DATE'2017-12-12',12,1300.00,12);
+INSERT INTO LEASE VALUES (13,12,DATE'2013-12-12',12,1400.00,12);
+INSERT INTO LEASE VALUES (14,12,DATE'2014-12-12',12,1500.00,12);
+INSERT INTO LEASE VALUES (15,12,DATE'2015-12-12',12,1600.00,12);
+INSERT INTO LEASE VALUES (16,12,DATE'2016-12-12',12,1600.00,12);
+INSERT INTO LEASE VALUES (17,12,DATE'2017-12-12',12,1600.66,12);
 
 REM Sample data for INVOICE
 REM Summary: store invoices data for each transaction
@@ -269,7 +281,7 @@ REM ***************************
 REM Query 1
 REM Purpose: Display the property type and landlord for
 REM each tenant that is renting a property.
-REM Expected: A table with 12 tuples containing a tenant
+REM Expected: A table with 14 tuples containing a tenant
 REM name, the landlord in charge of the property they are
 REM renting and the type of property.
 
@@ -281,11 +293,10 @@ JOIN PROPERTY P ON T.prop_id=P.id
 JOIN LANDLORD L ON P.lord_id=L.id;
 
 REM Query 2
-REM Purpose: Count the number of properties in each city
-REM that is currently being rented out.
+REM Purpose: Count the number of renters in each city.
 REM Expected: A table containing 3 tuples that have the
-REM number of properties being rented out.  It should be
-REM 4 per city (Narnia should not be in the table).
+REM number of renters in each city.  Output will be
+REM kent 4, Seattle 7, Tacoma 4.
 
 SELECT DISTINCT P.city, COUNT(*)
 FROM TENANT T, PROPERTY P
@@ -317,7 +328,7 @@ WHERE L.id = P.lord_id
 REM Query 4
 REM Purpose: Display every tenant and property
 REM address in the database.
-REM Expected: A table containing 14 tuples that
+REM Expected: A table containing 17 tuples that
 REM show the address and tenant for each property.
 REM One property should not have a tenant and one
 REM tenant should not have a property rented.
@@ -331,7 +342,7 @@ REM Purpose: Find all the tenants who has a lease
 REM with a duration of 6 months or less. We used
 REM 'MINUS' for this query which is equivalent
 REM to 'EXCEPT'.
-REM Expected: A table containing 4 tenant names.
+REM Expected: A table containing 3 tenant names.
 SELECT T.name
 FROM TENANT T, LEASE L
 WHERE T.id=L.tenant_id
@@ -343,7 +354,7 @@ WHERE T.id=L.tenant_id AND Duration_months > 6);
 REM Query 6
 REM Purpose: Find all tenants that are under a
 REM landlord with the name "Joshua".
-REM Expected: A table containing four tenant names.
+REM Expected: A table containing 7 tenant names.
 SELECT T.Name
 FROM LANDLORD L, TENANT T, PROPERTY P
 WHERE L.id=P.lord_id
