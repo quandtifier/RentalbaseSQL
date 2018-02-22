@@ -174,38 +174,38 @@ INSERT INTO INVOICE_TYPE VALUES ('MISC', 'Miscilaneous invoice.');
 REM Sample data for LANDLORD
 REM Summary: store landlords.
 
-INSERT INTO LANDLORD VALUES (1234,'Joshua Lansang','332 Lake Forest Drive', 'Seattle', 'WA',  98190, 2061234567, 'jlansang@rbase.com');
-INSERT INTO LANDLORD VALUES (5678,'Michael Quandt','74 Lookout Ave.', 'Silverlake', 'WA', 98645, 2531234567, 'mquandt@rbase.com');
-INSERT INTO LANDLORD VALUES (1538,'Alex Reid','834 Ashley St.', 'Malone', 'WA', 98559, 4251234567, 'areid@rbase.com');
+INSERT INTO LANDLORD VALUES (1,'Joshua Lansang','332 Lake Forest Drive', 'Seattle', 'WA',  98190, 2061234567, 'jlansang@rbase.com');
+INSERT INTO LANDLORD VALUES (2,'Michael Quandt','74 Lookout Ave.', 'Silverlake', 'WA', 98645, 2531234567, 'mquandt@rbase.com');
+INSERT INTO LANDLORD VALUES (3,'Alex Reid','834 Ashley St.', 'Malone', 'WA', 98559, 4251234567, 'areid@rbase.com');
 
-INSERT INTO LANDLORD VALUES (1946,'C S Lewis','1946 Harper St.','Narnia','WA',00000,1234567890,'cslewis@rbase.com');
-INSERT INTO LANDLORD VALUES (1000,'Jacob Bain','54 Military St.','Spanaway','WA',98387,2537777777,'baintrain@rbase.com');
-INSERT INTO LANDLORD VALUES (9999,'Sally Newman','979 Lakeview Rd.','Lakeview','WA',98851,2223334444,'bettercallsal@rbase.com');
-INSERT INTO LANDLORD VALUES (1231,'Biggs Darklighter','3 Red St.','Yavin','SW',77777,3331113333,'biggs@rbase.com');
-INSERT INTO LANDLORD VALUES (1232,'Wedge Antilles','2 Red St.','Yavin','SW',77777,2221113333,'wedge@rbase.com');
-INSERT INTO LANDLORD VALUES (7777,'Guy McGee','12 Oatmeal St.','Vermillion','WA',99992,9786574635,'geemcgee@rbase.com');
-INSERT INTO LANDLORD VALUES (6452,'Issac Clarke','2008 Kellion St.','Aegis','WA',66666,0707070707,'iclarke@rbase.com');
+INSERT INTO LANDLORD VALUES (4,'C S Lewis','1946 Harper St.','Narnia','WA',00000,1234567890,'cslewis@rbase.com');
+INSERT INTO LANDLORD VALUES (5,'Jacob Bain','54 Military St.','Spanaway','WA',98387,2537777777,'baintrain@rbase.com');
+INSERT INTO LANDLORD VALUES (6,'Sally Newman','979 Lakeview Rd.','Lakeview','WA',98851,2223334444,'bettercallsal@rbase.com');
+INSERT INTO LANDLORD VALUES (7,'Biggs Darklighter','3 Red St.','Yavin','SW',77777,3331113333,'biggs@rbase.com');
+INSERT INTO LANDLORD VALUES (8,'Wedge Antilles','2 Red St.','Yavin','SW',77777,2221113333,'wedge@rbase.com');
+INSERT INTO LANDLORD VALUES (9,'Guy McGee','12 Oatmeal St.','Vermillion','WA',99992,9786574635,'geemcgee@rbase.com');
+INSERT INTO LANDLORD VALUES (10,'Issac Clarke','2008 Kellion St.','Aegis','WA',66666,0707070707,'iclarke@rbase.com');
 
 REM Sample data for PROPERTY
 REM Summary: store 4 properties for each type of property
 REM as well as one property with no tenant.
 
-INSERT INTO PROPERTY VALUES (1,1234,'38 Galvin Road', 'Seattle', 'WA', 98181,5000,'Need something here', 'SFH 1BD/1BA');
-INSERT INTO PROPERTY VALUES (2,1234,'61 North Mulberry St.', 'Seattle', 'WA',98194,10000,'Need something here', 'STUDIO');
-INSERT INTO PROPERTY VALUES (3,1234,'87 Angel Ave', 'Seattle', 'WA',98109,15000,'Need something here', 'SFH 1BD/1BA');
-INSERT INTO PROPERTY VALUES (4,1234,'50 Old Dr.', 'Seattle', 'WA',98174,20000,'Need something here', 'SFH 1BD/1BA');
+INSERT INTO PROPERTY VALUES (1,1,'38 Galvin Road', 'Seattle', 'WA', 98181,5000,'Need something here', 'SFH 1BD/1BA');
+INSERT INTO PROPERTY VALUES (2,1,'61 North Mulberry St.', 'Seattle', 'WA',98194,10000,'Need something here', 'STUDIO');
+INSERT INTO PROPERTY VALUES (3,1,'87 Angel Ave', 'Seattle', 'WA',98109,15000,'Need something here', 'SFH 1BD/1BA');
+INSERT INTO PROPERTY VALUES (4,1,'50 Old Dr.', 'Seattle', 'WA',98174,20000,'Need something here', 'SFH 1BD/1BA');
 
-INSERT INTO PROPERTY VALUES (5,5678,'9860 Cactus Lane Apt A', 'Tacoma', 'WA', 98417,4000,'Need something here', 'APT 2BD/1BA');
-INSERT INTO PROPERTY VALUES (6,5678,'9860 Cactus Lane Apt B', 'Tacoma', 'WA', 98417,5000,'Need something here', 'APT 2BD/1BA');
-INSERT INTO PROPERTY VALUES (7,5678,'9860 Cactus Lane Apt C', 'Tacoma', 'WA', 98417,6000,'Need something here', 'APT 2BD/1BA');
-INSERT INTO PROPERTY VALUES (8,5678,'9860 Cactus Lane Apt D', 'Tacoma', 'WA', 98417,7000,'Need something here', 'APT 2BD/1BA');
+INSERT INTO PROPERTY VALUES (5,2,'9860 Cactus Lane Apt A', 'Tacoma', 'WA', 98417,4000,'Need something here', 'APT 2BD/1BA');
+INSERT INTO PROPERTY VALUES (6,2,'9860 Cactus Lane Apt B', 'Tacoma', 'WA', 98417,5000,'Need something here', 'APT 2BD/1BA');
+INSERT INTO PROPERTY VALUES (7,2,'9860 Cactus Lane Apt C', 'Tacoma', 'WA', 98417,6000,'Need something here', 'APT 2BD/1BA');
+INSERT INTO PROPERTY VALUES (8,2,'9860 Cactus Lane Apt D', 'Tacoma', 'WA', 98417,7000,'Need something here', 'APT 2BD/1BA');
 
-INSERT INTO PROPERTY VALUES (9,1538,'7689 W. College St. Suite 1', 'Kent', 'WA', 98031,2000,'Need something here', 'STUDIO');
-INSERT INTO PROPERTY VALUES (10,1538,'7689 W. College St. Suite 2', 'Kent', 'WA', 98031,3000,'Need something here', 'STUDIO');
-INSERT INTO PROPERTY VALUES (11,1538,'7689 W. College St. Suite 3', 'Kent', 'WA', 98031,4000,'Need something here', 'STUDIO');
-INSERT INTO PROPERTY VALUES (12,1538,'7689 W. College St. Suite 4', 'Kent', 'WA', 98031,5000,'Need something here', 'STUDIO');
+INSERT INTO PROPERTY VALUES (9,3,'7689 W. College St. Suite 1', 'Kent', 'WA', 98031,2000,'Need something here', 'STUDIO');
+INSERT INTO PROPERTY VALUES (10,3,'7689 W. College St. Suite 2', 'Kent', 'WA', 98031,3000,'Need something here', 'STUDIO');
+INSERT INTO PROPERTY VALUES (11,3,'7689 W. College St. Suite 3', 'Kent', 'WA', 98031,4000,'Need something here', 'STUDIO');
+INSERT INTO PROPERTY VALUES (12,3,'7689 W. College St. Suite 4', 'Kent', 'WA', 98031,5000,'Need something here', 'STUDIO');
 
-INSERT INTO PROPERTY VALUES (13,1946,'1950 Harper St.','Narnia','WA',00000,1000000,'Wardrobe not included.','SFH 1BD/1BA');
+INSERT INTO PROPERTY VALUES (13,4,'1950 Harper St.','Narnia','WA',00000,1000000,'Wardrobe not included.','SFH 1BD/1BA');
 
 REM Sample data for TENANT
 REM Summary: store data tenants for each property locations
